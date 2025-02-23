@@ -2,6 +2,7 @@
 import React from "react";
 import Rating from "@mui/material/Rating";
 import styles from "./ProductCard.module.css";
+import { CurrencyFormater } from "../CurrencyFormater/CurrencyFormater"; // Correct import
 
 export const ProductCard = ({ products }) => {
   const { image, title, rating, price, description } = products;
@@ -39,10 +40,10 @@ export const ProductCard = ({ products }) => {
           </>
         )}
       </div>
-      <div className={styles.productPrice}>Price: {price}</div>
-      <div className={styles.productDescription}>
-        {truncatedDescription}
-      </div>{" "}
+      <div className={styles.productPrice}>
+        <CurrencyFormater value={price} /> {/* This is what you want */}
+      </div>
+      <div className={styles.productDescription}>{truncatedDescription}</div>{" "}
       {/* Use truncatedDescription */}
       <button className={styles.button}>Add to Card</button>
     </div>
