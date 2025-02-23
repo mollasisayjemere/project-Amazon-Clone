@@ -1,0 +1,33 @@
+/* 
+/* .categoryContainer {
+  display: flex;          
+  flex-wrap: wrap;      
+  justify-content: space-between; 
+ 
+}  
+/* 
+.categoryContainer {
+  display: flex
+  grid-template-columns: repeat(4, 1fr); 
+  grid gap: 5px; 
+}   */
+
+.categoryContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal-width columns */
+  grid-gap: 5px;
+  gap: 100px; 
+}
+
+.categoryContainer > * { 
+    overflow: hidden;       
+    white-space: nowrap;   
+    text-overflow: ellipsis;
+}
+
+.categoryContainer > * img { 
+    max-width: 100%; 
+    height: auto;   
+}
+
+
