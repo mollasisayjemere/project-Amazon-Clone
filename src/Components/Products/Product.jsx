@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ProductCard } from './ProductCard';
 import styles from './Product.module.css';   
 
-export const Product = () => {
+ const product = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -25,3 +25,4 @@ export const Product = () => {
     </section>
   );
 };
+export default product

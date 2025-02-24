@@ -20,7 +20,7 @@ import { CategoryCard } from "./CategoryCard";
 import Infos from "./CategoryInfo";
 import styles from "./Category.module.css"; // Import CSS Module for Category
 
-export const Category = () => {
+ const Category = () => {
   return (
     <div className={styles.categoryContainer}>
       {" "}
@@ -31,3 +31,4 @@ export const Category = () => {
     </div>
   );
 };
+export default Category
