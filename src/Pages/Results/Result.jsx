@@ -1,44 +1,11 @@
-// import React from 'react'
-// import classes from  './Result.module.css'
-// import axios from axios;
-
-// import {producturl}from '../../Api/endPoint'
-// function Result() {
-//   const [reaults, setreaults] = useState([])
-//   cons {categoryName}=useparams
-//   useEffect(() => {
-  
-// (async ()=>{
-// try {
-//   let request =await axios.get(
-//     '${producturl}./products/category/$(categoryName)';
-//     console.log(request);
-//     setresults(results.data);
-  
-//   )}catch(error){
-//     console.error(error);
-   
-//   }
-//   )
-// })
-
-//   }, [])
-  
-//   return (
-//     <div>
-//       <h1>Result</h1>
-//     </div>
-//   );
-// }
-
-// export default Result
 
 
 // import React, { useState, useEffect } from "react";
 // // import classes from "./Result.module.css";
 // import axios from "axios";
-// import { useParams } from "react-router-dom"; 
-// import { producturl } from "../../Api/endPoint";
+// import { useParams } from "react-router-dom";
+
+// import producturl from "../../Api/endPoint"; 
 // import Layout from "../../Components/LayOut/Layout";
 // import { ProductCard } from "../../Components/Products/ProductCard";
 
@@ -50,7 +17,7 @@
 //     (async () => {
 //       try {
 //         const request = await axios.get(
-//           `${producturl}/products/category/${categoryName}` // Corrected URL construction
+//           `${productUrl}/products/category/${categoryName}` // Corrected URL construction
 //         );
 //         console.log(request);
 //         setResults(request.data); // Corrected setResults and using request.data
@@ -61,56 +28,62 @@
 //   }, [categoryName]); // Added categoryName to the dependency array
 
 //   return (
-//     <layout>
+//     <Layout>
 //       <div>
 //         <h1>Results</h1>
 //         <p> category/categoryName</p>
 //         <hr />
 //         {results?.map((product) => (
-//        <ProductCard key={product.id} product {product}/>
+//           <ProductCard key={product.id} product={product} />
 //         ))}
 //       </div>
-//     </layout>
+//     </Layout>
 //   );
 // }
 
 // export default Result;
 
-import React, { useState, useEffect } from "react";
-// import classes from "./Result.module.css"; // Consider i
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { producturl } from "../../Api/endPoint";
-import Layout from "../../Components/LayOut/Layout"; // Ensure LayOut exists and is correct!
-import { ProductCard } from "../../Components/Products/ProductCard";
 
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { ProductCard } from "../../Components/Products/ProductCard";
+import Layout from "../../Components/LayOut/Layout";
+import producturl from '../../Api/endPoint'
+import styles from './Result.module.css'
 function Result() {
-  const [results, setResults] = useState([]);
   const { categoryName } = useParams();
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       try {
-        const request = await axios.get(
+        const response = await axios.get(
           `${producturl}/products/category/${categoryName}`
         );
-        console.log(request);
-        setResults(request.data);
+        // console.log(response.data); // Add this line to check the data
+        setResults(response.data);
       } catch (error) {
-        console.error(error);
+        // console.error("Error fetching products:", error);
       }
-    })();
+    };
+
+    fetchData();
   }, [categoryName]);
 
   return (
     <Layout>
-      <div>
+      <div className={styles.results__container}>
         <h1>Results</h1>
-        <p> category: {categoryName}</p> {/* Display the category name */}
+        <p style={{ padding: "2rem" }}>Category / {categoryName}</p>
+
         <hr />
-        {results?.map((product) => (
-          <ProductCard key={product.id} product={product} /> //Corrected prop
-        ))}
+
+        <div className={styles.products__container}>
+          {results.map((product) => (
+            <ProductCard key={product.id} products={product} />
+          ))}
+        </div>
       </div>
     </Layout>
   );

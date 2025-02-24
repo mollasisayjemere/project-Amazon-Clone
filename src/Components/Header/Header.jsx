@@ -4,6 +4,7 @@ import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
 import styles from "./Header.module.css"; // Correct import
 import { LowerHeader } from "./LowerHeader";
+import { Link } from "react-router-dom";
 
 
 const Header = () => {
@@ -12,9 +13,9 @@ const Header = () => {
       <div className={styles.header__container}>
         {/* Logo */}
         <div className={styles.logo__container}>
-          <a href="/">
+          <Link to="/">
             <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" />
-          </a>
+          </ Link>
 
           {/* Location */}
           <div className={styles.delivery}>
@@ -39,7 +40,7 @@ const Header = () => {
 
         {/* Navigation */}
         <div className={styles.order__container}>
-          <a href="#" className={styles.language}>
+          <Link to="/" className={styles.language}>
             <img
               src="https://flagpedia.net/data/flags/w1160/lu.webp"
               alt="Luxembourg flag"
@@ -47,22 +48,22 @@ const Header = () => {
             <select>
               <option value="">En</option>
             </select>
-          </a>
+          </ Link>
 
-          <a href="#">
+          <Link to="/auth">
             <p>Sign In</p>
             <span>Account & List</span>
-          </a>
+          </Link>
 
-          <a href="#">
+          <Link to="/Orders">
             <p>Returns</p>
             <span> & Orders</span>
-          </a>
+          </ Link>
 
-          <a href="#" className={styles.cart}>
+          <Link to="/cart" className={styles.cart}>
             <BiCart size={35} />
-            <span>0</span>
-          </a>
+            <span> 0</span>
+          </ Link>
         </div>
       </div>
       <LowerHeader />
