@@ -1,53 +1,79 @@
-import React, { useState, useEffect } from "react";
-import Layout from "../../Components/LayOut/Layout";
+
+
+
+import React, { useEffect, useState } from "react";
+// import classes from "./productDetail.module.css";
+import LayOut from "../../Components/LayOut/LayOut/";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { ProductCard } from "../../Components/Products/ProductCard";
-import Loader from "../../Components/Loader/Loader"; 
-import styles from "./ProductDetail.module.css";
-import producturl from "../../Api/endPoint";
+import  productUrl  from "../../Api/endPoint";
+import{ ProductCard} from '../../Components/Products/ProductCard'
+import Loader from "../../Components/Loader/Loader";
 
 function ProductDetail() {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null); // Initialize with null
-  const [loading, setLoading] = useState(true); // Initialize with true
+  const [isLoading, setIsLoading] = useState(false);
+  const [product, setProduct] = useState({});
+  const [error, setError] = useState(null); 
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProduct = async () => {
+      setIsLoading(true);
+      setError(err); // Clear any previous errors
+
       try {
-        const response = await axios.get(`${productUrl}/products/${productId}`); // Corrected URL
+        // const response = await axios.get(`${productUrl}/products/${productId}`);
+
+
+        const response = await axios.get(`${productUrl}/products/${id}`);
         setProduct(response.data);
-        setLoading(false);
-      } catch (error) {
-        // Corrected catch syntax
-        console.error(error);
-        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+        setError(err); 
+      
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    fetchData();
-  }, [productId]);
+    fetchProduct();
+  }, [productId]); // Add productId to the dependency array
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <Layout>
+      <LayOut>
         <Loader />
-      </Layout>
+      </LayOut>
+    );
+  }
+
+  if (error) {
+    return (
+      <LayOut>
+        <div>Error loading product. Please try again later.</div>
+      </LayOut>
     );
   }
 
   if (!product) {
     return (
-      <Layout>
+      <LayOut>
         <div>Product not found.</div>
-      </Layout>
+      </LayOut>
     );
   }
 
   return (
-    <Layout>
-      <ProductCard products={product} flex={true} rendeDecri={true} />
-    </Layout>
+    <LayOut>
+      <ProductCard product = {product} 
+        data={[product]} // Wrap product in an array
+        flex={true}
+        renderDesc={true}
+        renderAdd={true}
+      />
+
+  
+    </LayOut>
   );
 }
 

@@ -1,11 +1,26 @@
-import React from "react";
+
+
+
+import React, { useContext } from "react";
 import Rating from "@mui/material/Rating";
 import styles from "./ProductCard.module.css";
 import { CurrencyFormater } from "../CurrencyFormater/CurrencyFormater";
 import { Link } from "react-router-dom";
+import { Datacontext } from "../../DataProvider/DataProvider.jsx";
+import { Type } from "../../Utility/ActionType.js"; // Corrected import (uppercase T)
 
 export const ProductCard = ({ products, flex, renderDesc }) => {
   const { image, title, rating, price, description, id } = products;
+  // const(count,rate)=rating // Commented out unused code
+const { state, dispatch } = useContext(Datacontext); // Corrected syntax
+
+  const AddToCart = () => {
+    // Corrected function name
+    dispatch({
+      type: Type.ADD_TO_BASKET, // Corrected: Assumed ADD_TO_BASKET is the correct action type.  Access it from Type
+      item: products, // Corrected: Assuming you want to add the *product* itself
+    });
+  };
 
   const truncateDescription = (text, maxLength) => {
     if (!text) return "";
@@ -21,7 +36,7 @@ export const ProductCard = ({ products, flex, renderDesc }) => {
 
   return (
     <div className={styles.productCard}>
-      <Link to={`/product/${id}`}>
+      <Link to={`/products/${id}`}>
         <img src={image} alt={title} />
       </Link>
       <div className={styles.productTitle}>
@@ -44,7 +59,10 @@ export const ProductCard = ({ products, flex, renderDesc }) => {
         <CurrencyFormater value={price} />
       </div>
       <div className={styles.productDescription}>{truncatedDescription}</div>
-      <button className={styles.button}>Add to Card</button>
+      <button className={styles.button} onClick={AddToCart}>
+        Add to Cart
+      </button>{" "}
+      {/* Corrected function name */}
     </div>
   );
 };

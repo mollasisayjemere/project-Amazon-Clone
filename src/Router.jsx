@@ -17,11 +17,13 @@ function Router() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/Product/:productId" element={<ProductDetail />} />
           <Route path="/auth" element={<SignUp />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/payment" element={<Payment />} />
-          <Route path="/Products/:productId" element={ProductDetail}/>
+
+          {/* <Route path="/products/:id" element={<ProductDetail />} /> */}
           <Route path="/category/:categoryName" element={<Result />} />
         </Routes>
       </BrowserRouter>

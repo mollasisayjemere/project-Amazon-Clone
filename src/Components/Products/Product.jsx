@@ -37,7 +37,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "../../Components/Products/ProductCard";
 import styles from "./Product.module.css";
 
 import Loader from "../Loader/Loader";
@@ -70,8 +70,8 @@ const Product = () => {
         <Loader />
       ) : (
         <section className={styles.products_container}>
-          {products.map((product) => (
-            <ProductCard key={product.id} products={product} />
+          {products?.map((product,i) => (
+            <ProductCard key={i} products={product} />
           ))}
         </section>
       )}
