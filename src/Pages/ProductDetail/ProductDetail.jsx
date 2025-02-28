@@ -2,7 +2,7 @@
 
 
 import React, { useEffect, useState } from "react";
-// import classes from "./productDetail.module.css";
+import classes from "./productDetail.module.css";
 import LayOut from "../../Components/LayOut/LayOut/";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -14,22 +14,20 @@ function ProductDetail() {
   const { productId } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [product, setProduct] = useState({});
-  const [error, setError] = useState(null); 
+ 
 
   useEffect(() => {
     const fetchProduct = async () => {
       setIsLoading(true);
-      setError(err); // Clear any previous errors
+   
 
       try {
-        // const response = await axios.get(`${productUrl}/products/${productId}`);
-
-
-        const response = await axios.get(`${productUrl}/products/${id}`);
+     
+        const response = await axios.get(`${productUrl}/products/${productId}`);
         setProduct(response.data);
       } catch (err) {
         console.error("Error fetching product:", err);
-        setError(err); 
+      
       
       } finally {
         setIsLoading(false);
@@ -37,36 +35,12 @@ function ProductDetail() {
     };
 
     fetchProduct();
-  }, [productId]); // Add productId to the dependency array
+  }, [productId]); 
 
-  if (isLoading) {
-    return (
-      <LayOut>
-        <Loader />
-      </LayOut>
-    );
-  }
-
-  if (error) {
-    return (
-      <LayOut>
-        <div>Error loading product. Please try again later.</div>
-      </LayOut>
-    );
-  }
-
-  if (!product) {
-    return (
-      <LayOut>
-        <div>Product not found.</div>
-      </LayOut>
-    );
-  }
 
   return (
     <LayOut>
-      <ProductCard product = {product} 
-        data={[product]} // Wrap product in an array
+      <ProductCard products = {product} 
         flex={true}
         renderDesc={true}
         renderAdd={true}

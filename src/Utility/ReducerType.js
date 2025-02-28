@@ -1,16 +1,17 @@
 
 
-import React, { useReducer } from "react";
+import {Type} from './ActionType'
 
 export const initialState = {  
   basket: []
 };
 
-export const Reducer = (state, action) => { 
+export const reducer = (state, action) => { 
   switch (action.type) {  
-    case "ADD_TO_BASKET": 
+    case " Type.ADD_TO_BASKET": 
       return { ...state, basket: [...state.basket, action.item] }; 
     default:
       return state;
   }
 };
+

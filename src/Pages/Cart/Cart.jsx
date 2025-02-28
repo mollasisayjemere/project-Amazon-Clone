@@ -1,59 +1,59 @@
 
+
+
 // import React, { useContext } from "react";
 // import classes from "./Cart.module.css";
 // import Layout from "../../Components/LayOut/Layout"; // Corrected import
 // import { Datacontext } from "../../DataProvider/DataProvider";
+// import {ProductCard} from "../../Components/Products/ProductCard"; // Assuming you have a ProductCard component
 
 // function Cart() {
-//   const {(basket), dipatch} = useContext(Datacontext)
+//   const [ (basket), dispatch ] = useContext(Datacontext);
+
+
 //   return (
 //     <Layout>
 //       <section>
 //         <div>
-//            <h2>Hello</h2>
-//         <h2>Your shopping Basket</h2>
-//         </div>
-       
+//           <h2>Hello</h2>
+//           <h3>Your shopping Basket</h3>
 //         <hr />
-//             basket.length===0 ?(<p>No items in your carts</p>)
-//       basket?.map((item,i)=>{
-//         return <productCard key {i} product {item}/>
-//       })
+//         {basket.length === 0 ? ( <p>No items in your cart</p>
+//         ) :(basket?.map((item, i) => (
+//             <ProductCard key={i} product={item}  /> 
+//           ))
+//         )}
+      
+//         </div>
 //       </section>
-  
 //     </Layout>
 //   );
 // }
 
 // export default Cart;
 
-
 import React, { useContext } from "react";
 import classes from "./Cart.module.css";
-import Layout from "../../Components/LayOut/Layout"; // Corrected import
+import Layout from "../../Components/Layout/Layout"; // Ensure correct path casing
 import { Datacontext } from "../../DataProvider/DataProvider";
-import {ProductCard} from "../../Components/Products/ProductCard"; // Assuming you have a ProductCard component
+import { ProductCard } from "../../Components/Products/ProductCard";
 
 function Cart() {
-  const { state, dispatch } = useContext(Datacontext); // Corrected: Access 'state' and 'dispatch'
-  const basket = state ? state.basket : []; // Safely access the basket
+  const [basket, dispatch] = useContext(Datacontext); // Removed parentheses around basket
 
   return (
     <Layout>
       <section>
         <div>
           <h2>Hello</h2>
-          <h2>Your shopping Basket</h2>
+          <h3>Your shopping Basket</h3>
+          <hr />
+          {basket.length === 0 ? (
+            <p>No items in your cart</p>
+          ) : (
+            basket?.map((item, i) => <ProductCard key={i} product={item} />)
+          )}
         </div>
-
-        <hr />
-        {basket.length === 0 ? (
-          <p>No items in your cart</p>
-        ) : (
-          basket?.map((item, i) => (
-            <ProductCard key={i} product={item} /> // Corrected syntax: key and prop assignment
-          ))
-        )}
       </section>
     </Layout>
   );

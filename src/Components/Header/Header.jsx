@@ -7,15 +7,15 @@ import { LowerHeader } from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { Datacontext } from "../../DataProvider/DataProvider";
 import { useContext } from "react";
+// import { CgLaptop } from "react-icons/cg";
 
 const Header = () => {
-  const { state } = useContext(Datacontext); // Access state from context
-  const basket = state ? state.basket : []; //Safely access basket
+  const [{basket},dispatch] = useContext(Datacontext); 
 
   return (
     <section className={styles.fixed}>
       <div className={styles.header__container}>
-        {/* Logo */}
+   
         <div className={styles.logo__container}>
           <Link to="/">
             <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" />

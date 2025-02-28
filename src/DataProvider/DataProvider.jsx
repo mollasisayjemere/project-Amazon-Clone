@@ -1,16 +1,16 @@
 
 
-import React, { createContext, useReducer } from "react";
+import React, { children, createContext, useReducer } from "react";
+
 
 export const Datacontext = createContext();
 
-function DataProvider({ children, Reducer, initialState }) {
-  const [state, dispatch] = useReducer(Reducer, initialState); 
+function DataProvider({ children, reducer, initialState }) {
+ 
 
   return (
-    <Datacontext.Provider value={{ state, dispatch }}>
-      {" "}
-      {/* Provide both state and dispatch */}
+    <Datacontext.Provider value={ useReducer(reducer,initialState)}>
+    
       {children}
     </Datacontext.Provider>
   );

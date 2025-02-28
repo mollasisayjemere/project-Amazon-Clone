@@ -1,41 +1,96 @@
 
 
 
+// import React, { useContext } from "react";
+// import Rating from "@mui/material/Rating";
+// import styles from "./ProductCard.module.css";
+// import {CurrencyFormater} from '../CurrencyFormater/CurrencyFormater.jsx';
+// import { Link } from "react-router-dom";
+// import { Datacontext } from "../../DataProvider/DataProvider";
+// import { Type } from "../../Utility/ActionType.js"; 
+
+// export const ProductCard = ({ products, flex, renderDesc })  {
+//   const { image, title, rating, price, description, id } = products;
+
+// const { state, dispatch } = useContext(Datacontext);  
+
+//   const AddToCart = () => {
+  
+//     dispatch({
+//       type: Type.ADD_TO_BASKET, 
+//       item:[image,title,rating,id,price,description]  
+//     });
+//   };
+
+//   return (
+//     <div className={ $`{styles.card_container}` $`{flex}? style.product_flexel`}>
+//       <Link to={`/products/${id}`}>
+//         <img src={image} alt={title} />
+//       </Link>
+//       <div className={styles.productTitle}>
+//         <h2>{title}</h2>
+//       </div>
+//       <div className={styles.productRating}>
+//         {rating && (
+//           <>
+//             <Rating
+//               name="read-only"
+//               value={rating?.rate} // Use optional chaining
+//               precision={0.5}
+//               readOnly
+//             />
+//             <small>{rating?.count} ratings</small> {/* Use optional chaining */}
+//           </>
+//         )}
+//       </div>
+//       <div className={styles.productPrice}>
+//         <CurrencyFormater value={price} />
+//       </div>
+//       <div className={styles.productDescription}>{truncatedDescription}</div>
+//       <button className={styles.button} onClick={AddToCart}>
+//         Add to Cart
+//       </button>{" "}
+//       {/* Corrected function name */}
+//     </div>
+//   );
+// };
+
+
+
 import React, { useContext } from "react";
 import Rating from "@mui/material/Rating";
 import styles from "./ProductCard.module.css";
-import { CurrencyFormater } from "../CurrencyFormater/CurrencyFormater";
+import { CurrencyFormater } from "../CurrencyFormater/CurrencyFormater.jsx";
 import { Link } from "react-router-dom";
-import { Datacontext } from "../../DataProvider/DataProvider.jsx";
-import { Type } from "../../Utility/ActionType.js"; // Corrected import (uppercase T)
+import { Datacontext } from "../../DataProvider/DataProvider";
+import { Type } from "../../Utility/ActionType.js";
 
 export const ProductCard = ({ products, flex, renderDesc }) => {
   const { image, title, rating, price, description, id } = products;
-  // const(count,rate)=rating // Commented out unused code
-const { state, dispatch } = useContext(Datacontext); // Corrected syntax
+
+  const { state, dispatch } = useContext(Datacontext);
 
   const AddToCart = () => {
-    // Corrected function name
     dispatch({
-      type: Type.ADD_TO_BASKET, // Corrected: Assumed ADD_TO_BASKET is the correct action type.  Access it from Type
-      item: products, // Corrected: Assuming you want to add the *product* itself
+      type: Type.ADD_TO_BASKET,
+      item: { image, title, rating, id, price, description }, 
     });
   };
 
-  const truncateDescription = (text, maxLength) => {
-    if (!text) return "";
-
-    if (text.length <= maxLength) {
-      return text;
-    }
-
-    return text.substring(0, maxLength) + "...";
-  };
-
-  const truncatedDescription = truncateDescription(description, 50);
+  //Truncate Description
+  const truncatedDescription =
+    description?.length > 100
+      ? description.substring(0, 100) + "..."
+      : description;
 
   return (
-    <div className={styles.productCard}>
+    <div
+      className={`${styles.card_container} ${
+        flex ? styles.product_flexel : ""
+      }`}
+    >
+      {" "}
+      {/* Corrected template literal and class application */}
       <Link to={`/products/${id}`}>
         <img src={image} alt={title} />
       </Link>
@@ -61,8 +116,7 @@ const { state, dispatch } = useContext(Datacontext); // Corrected syntax
       <div className={styles.productDescription}>{truncatedDescription}</div>
       <button className={styles.button} onClick={AddToCart}>
         Add to Cart
-      </button>{" "}
-      {/* Corrected function name */}
+      </button>
     </div>
   );
 };
