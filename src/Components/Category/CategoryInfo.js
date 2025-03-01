@@ -3,14 +3,14 @@ const Infos = [
     id: 1,
     title: "Jewelery ",
     name: "jewelery",
-    imgLink: "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    imgLink: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
   },
 
   {
     id: 2,
     title: "electronics",
     name: "electronics",
-    imgLink: "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+    imgLink: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
   },
 
   {

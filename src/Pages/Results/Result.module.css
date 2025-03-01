@@ -12,6 +12,6 @@
   justify-items: center;
 }
 
-.products__container section {
+.products__container div {
   margin: 0 auto;
 }

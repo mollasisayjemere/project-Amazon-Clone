@@ -1,14 +1,16 @@
 .category {
-    height: 20rem;
+    height: 25rem;
     width: 20rem;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0,0, 0.2);
+    /* box-sizing: border-box; */
 }
 
 .category img {
-    width: 96%;
+    width: 100%;
     object-fit: contain;
-    max-height: 15rem;
+    max-height: 20rem;
+    /* height: auto; */
     padding: 0 .625rem;
 }
 
@@ -36,4 +38,5 @@
     place-items: center; */
     display: flex;
     justify-content: space-around;
+    margin-bottom: 10px;
 }

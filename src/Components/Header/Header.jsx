@@ -7,10 +7,17 @@ import { LowerHeader } from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { Datacontext } from "../../DataProvider/DataProvider";
 import { useContext } from "react";
-// import { CgLaptop } from "react-icons/cg";
+
 
 const Header = () => {
-  const [{basket},dispatch] = useContext(Datacontext); 
+  // const [{basket},dispatch] = useContext(Datacontext); 
+
+    // const context = useContext(Datacontext);
+    // const { state } = context || {};
+    // const basket = state?.basket || [];
+ const { state } = useContext(Datacontext);
+ const basket = state?.basket || [];
+
 
   return (
     <section className={styles.fixed}>

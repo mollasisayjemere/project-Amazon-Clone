@@ -65,7 +65,7 @@ import { Link } from "react-router-dom";
 import { Datacontext } from "../../DataProvider/DataProvider";
 import { Type } from "../../Utility/ActionType.js";
 
-export const ProductCard = ({ products, flex, renderDesc }) => {
+export const ProductCard = ({ products, flex, renderDesc,RenderAdd }) => {
   const { image, title, rating, price, description, id } = products;
 
   const { state, dispatch } = useContext(Datacontext);
@@ -73,7 +73,8 @@ export const ProductCard = ({ products, flex, renderDesc }) => {
   const AddToCart = () => {
     dispatch({
       type: Type.ADD_TO_BASKET,
-      item: { image, title, rating, id, price, description }, 
+      item: 
+      { image, title, rating, id, price, description }, 
     });
   };
 
@@ -102,21 +103,25 @@ export const ProductCard = ({ products, flex, renderDesc }) => {
           <>
             <Rating
               name="read-only"
-              value={rating?.rate} // Use optional chaining
+              value={rating?.rate} 
               precision={0.5}
               readOnly
             />
-            <small>{rating?.count} ratings</small> {/* Use optional chaining */}
+            <small>{rating?.count} ratings</small> 
           </>
         )}
       </div>
       <div className={styles.productPrice}>
         <CurrencyFormater value={price} />
       </div>
-      <div className={styles.productDescription}>{truncatedDescription}</div>
+      (RenderAdd && (
       <button className={styles.button} onClick={AddToCart}>
         Add to Cart
       </button>
+      ))
+      <div className={styles.productDescription}>{truncatedDescription}</div>
     </div>
   );
 };
+
+

@@ -81,7 +81,7 @@ function Result() {
 
         <div className={styles.products__container}>
           {results.map((product) => (
-            <ProductCard key={product.id} products={product} />
+            <ProductCard key={product.id} products={product} RenderAdd={true}/>
           ))}
         </div>
       </div>

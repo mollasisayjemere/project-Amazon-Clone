@@ -1,22 +1,22 @@
 
 
-.productCard { /* This will be the root class for the card */
+.card_container { 
   width: 250px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 10px;
   color: black;
   text-decoration: none;
   position: relative;
-  display: block; /* Ensures it takes up the full width of the grid cell */
-  height: 100%; /* Ensure all cards take same height*/
-  box-sizing: border-box; /* include padding and border in the element's total width and height */
+ 
+  height: 100%; 
+  box-sizing: border-box; 
 }
 
-.productCard:hover .button {
+.card_container:hover .button {
   display: block;
 }
 
-.productCard img {
+.card_container img {
   padding: 10px;
   width: 100%;
   height: 100px;
