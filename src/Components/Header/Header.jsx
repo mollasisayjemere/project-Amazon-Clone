@@ -15,9 +15,10 @@ const Header = () => {
     // const context = useContext(Datacontext);
     // const { state } = context || {};
     // const basket = state?.basket || [];
- const { state } = useContext(Datacontext);
- const basket = state?.basket || [];
+ const [{ basket },dispatch] = useContext(Datacontext);
 
+
+ const totalItem = basket.reduce((amount,item)=> amount + item.amount,0)
 
   return (
     <section className={styles.fixed}>
@@ -73,7 +74,7 @@ const Header = () => {
 
           <Link to="/cart" className={styles.cart}>
             <BiCart size={35} />
-            <span> {basket.length}</span>
+            <span> {totalItem}</span>
           </Link>
         </div>
       </div>

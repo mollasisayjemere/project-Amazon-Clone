@@ -14,11 +14,11 @@
 
 import React from "react";
 import numeral from "numeral";
-
-export const CurrencyFormater = ({ value }) => {
-  const formattedPrice = numeral(value).format("$0,0.00"); // Format the price here
+function CurrencyFormater  ({ value })  {
+  const formattedPrice = numeral(value).format("$0,0.00");
 
   return (
-    <span>{formattedPrice}</span> // Render the formatted price
+    <span>{formattedPrice}</span> 
   );
 };
+export default CurrencyFormater;

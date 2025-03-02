@@ -51,20 +51,25 @@ import { ProductCard } from "../../Components/Products/ProductCard";
 import Layout from "../../Components/LayOut/Layout";
 import producturl from '../../Api/endPoint'
 import styles from './Result.module.css'
+import Loader from "../../Components/Loader/Loader";
 function Result() {
+  const [loading,setLoading]=useState(false)
   const { categoryName } = useParams();
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true)
       try {
         const response = await axios.get(
           `${producturl}/products/category/${categoryName}`
         );
         // console.log(response.data); // Add this line to check the data
         setResults(response.data);
+        setLoading(false)
       } catch (error) {
-        // console.error("Error fetching products:", error);
+        console.error("Error fetching products:", error);
+        setLoading(false)
       }
     };
 
@@ -79,11 +84,20 @@ function Result() {
 
         <hr />
 
-        <div className={styles.products__container}>
-          {results.map((product) => (
-            <ProductCard key={product.id} products={product} RenderAdd={true}/>
-          ))}
-        </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className={styles.products__container}>
+            {results.map((product) => (
+              <ProductCard
+                key={product.id}
+                products={product}
+                RenderAdd={true}
+                renderDesc={false}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   );

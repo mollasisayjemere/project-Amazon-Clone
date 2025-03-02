@@ -25,10 +25,11 @@ function ProductDetail() {
      
         const response = await axios.get(`${productUrl}/products/${productId}`);
         setProduct(response.data);
+        setIsLoading(false)
       } catch (err) {
         console.error("Error fetching product:", err);
       
-      
+      setIsLoading(false)
       } finally {
         setIsLoading(false);
       }
@@ -40,13 +41,16 @@ function ProductDetail() {
 
   return (
     <LayOut>
-      <ProductCard products = {product} 
-        flex={true}
-        renderDesc={true}
-        renderAdd={true}
-      />
-
-  
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ProductCard
+          products={product}
+          flex={true}
+          renderDesc={true}
+          renderAdd={true}
+        />
+      )}
     </LayOut>
   );
 }

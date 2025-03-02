@@ -3,12 +3,13 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./Pages/LandingPage/LandingPage.jsx"; 
-import SignUp from "./Pages/Auth/SignUp.jsx";
+import auth from './Pages/Auth/Auth.jsx'
 import Cart from "./Pages/Cart/Cart.jsx";
 import Orders from "./Pages/Orders/Orders.jsx";
 import Payment from "./Pages/PaymentPage/PaymentPage.jsx";
 import Result from "./Pages/Results/Result";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail.jsx";
+import Auth from "./Pages/Auth/Auth.jsx";
 
 function Router() {
 
@@ -18,7 +19,7 @@ function Router() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/Products/:productId" element={<ProductDetail />} />
-          <Route path="/auth" element={<SignUp />} />
+          <Route path="/Auth" element={<Auth />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/payment" element={<Payment />} />

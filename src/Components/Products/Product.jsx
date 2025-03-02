@@ -10,11 +10,11 @@ import Loader from "../Loader/Loader";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // Initialize loading to true
+  const [loading, setLoading] = useState(false); 
 
   useEffect(() => {
     const fetchData = async () => {
-      // Use async/await for cleaner code
+  setLoading(true)
       try {
         const response = await axios.get("https://fakestoreapi.com/products");
         setProducts(response.data);
@@ -36,8 +36,8 @@ const Product = () => {
         <Loader />
       ) : (
         <section className={styles.products_container}>
-          {products?.map((product,i) => (
-            <ProductCard key={i} products={product}  renderDesc={true}/>
+          {products?.map((product, i) => (
+            <ProductCard key={i} products={product} renderDesc={false} RenderAdd={true}/>
           ))}
         </section>
       )}
