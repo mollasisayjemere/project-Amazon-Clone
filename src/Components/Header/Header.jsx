@@ -7,6 +7,7 @@ import { LowerHeader } from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { Datacontext } from "../../DataProvider/DataProvider";
 import { useContext } from "react";
+import {auth} from '../../Utility/Firebase'
 
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
     // const context = useContext(Datacontext);
     // const { state } = context || {};
     // const basket = state?.basket || [];
- const [{ basket },dispatch] = useContext(Datacontext);
+ const [{user, basket },dispatch] = useContext(Datacontext);
 
 
  const totalItem = basket.reduce((amount,item)=> amount + item.amount,0)
@@ -23,7 +24,6 @@ const Header = () => {
   return (
     <section className={styles.fixed}>
       <div className={styles.header__container}>
-   
         <div className={styles.logo__container}>
           <Link to="/">
             <img src="https://pngimg.com/uploads/amazon/amazon_PNG11.png" />
@@ -62,8 +62,23 @@ const Header = () => {
             </select>
           </Link>
 
-          <Link to="/auth">
-            <p>Sign In</p>
+          <Link to={!user && "/Auth"}>
+            <div>
+              {user ? (
+                <>
+                  <p>Hello {user?.email?.split("@")[9]}</p>
+
+                  <span onClick={()=>auth.signOut()}>sign out</span>
+                </>
+              ) : (
+                <>
+                  <p>Sign In</p>
+                  <span>Account & List</span>
+                </>
+              )}
+              (<p>Hello Molla </p>)
+            </div>
+
             <span>Account & List</span>
           </Link>
 

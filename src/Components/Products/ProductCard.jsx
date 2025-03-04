@@ -28,12 +28,6 @@ export const ProductCard = ({ products, flex, renderDesc, RenderAdd }) => {
     });
   };
 
-  // //Truncate Description
-  // const truncatedDescription =
-  //   description?.length > 100
-  //     ? description.substring(0, 100) + "..."
-  //     : description;
-
   return (
     <div
       className={`${styles.card_container} ${
@@ -79,3 +73,5 @@ export const ProductCard = ({ products, flex, renderDesc, RenderAdd }) => {
     </div>
   );
 };
+
+

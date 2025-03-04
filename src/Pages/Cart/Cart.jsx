@@ -33,10 +33,10 @@ function Cart() {
     <Layout>
       <div className={classes.container}>
         <div className={classes.cart__container}>
-          <h2>Your Shopping Basket</h2>
+          <h1>Your Shopping Basket</h1>
           <hr />
           {basket?.length === 0 ? (
-            <p>No items in your Cart!</p>
+            <h3>No items in your Cart!</h3>
           ) : (
             basket?.map((item, i) => {
               return (

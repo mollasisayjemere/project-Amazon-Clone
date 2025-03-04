@@ -1,0 +1,126 @@
+/* .login{
+   height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.login img{
+    margin: 30px auto;
+    object-fit: contain;
+    width: 100px;
+
+} */
+
+
+/* Auth.module.css */
+
+/* Auth.module.css */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.amazonLogo {
+  width: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.loginContainer {
+  width: 350px; /* Adjust width based on image */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* added this property */
+}
+
+.loginContainer h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* New style for input fields */
+.inputField {
+  padding: 8px;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+  font-size: 16px;
+  background-color: #fff; /* White background for inputs */
+}
+
+.signInButton {
+  background-color: #f0c14b;
+  border: 1px solid;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+ width: 200px;
+}
+
+.signInButton:hover {
+  background-color: #f7ca5f;
+}
+
+/* Grouping the text and "create account" button for better structure */
+.bottomSection {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+
+.termsText {
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: left; /* Text is now left-aligned */
+  padding: 10px 0px;
+}
+
+.newAccount {
+  margin-top: 20px;
+  width: 100%; /* Make the button full width */
+}
+
+.registerButton {
+  background-color: #e7e9ec;
+  border: 1px solid #adb1b8;
+  border-color:  #8d9096;
+  border-radius: 3px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  width: 100%;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.registerButton:hover {
+  background-color: #dddddd;
+}
