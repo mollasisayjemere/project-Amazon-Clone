@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
@@ -7,19 +7,17 @@ import { LowerHeader } from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { Datacontext } from "../../DataProvider/DataProvider";
 import { useContext } from "react";
-import {auth} from '../../Utility/Firebase'
-
+import { auth } from "../../Utility/Firebase";
 
 const Header = () => {
-  // const [{basket},dispatch] = useContext(Datacontext); 
+  // const [{basket},dispatch] = useContext(Datacontext);
 
-    // const context = useContext(Datacontext);
-    // const { state } = context || {};
-    // const basket = state?.basket || [];
- const [{user, basket },dispatch] = useContext(Datacontext);
+  // const context = useContext(Datacontext);
+  // const { state } = context || {};
+  // const basket = state?.basket || [];
+  const [{ user, basket }, dispatch] = useContext(Datacontext);
 
-
- const totalItem = basket.reduce((amount,item)=> amount + item.amount,0)
+  const totalItem = basket.reduce((amount, item) => amount + item.amount, 0);
 
   return (
     <section className={styles.fixed}>
@@ -68,7 +66,7 @@ const Header = () => {
                 <>
                   <p>Hello {user?.email?.split("@")[9]}</p>
 
-                  <span onClick={()=>auth.signOut()}>sign out</span>
+                  <span onClick={() => auth.signOut()}>sign out</span>
                 </>
               ) : (
                 <>

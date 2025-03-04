@@ -8,12 +8,25 @@ function App() {
   const [{ user }, dispatch] = useContext(Datacontext);
 
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+  auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         console.log(authUser);
+        dispatch({
+          type: Type.SET_USER,
+          user: authUser,
+        });
+    
+      } else {
+        dispatch({
+          type: Type.SET_USER,
+          user: null,
+        });
       }
     });
   }, []);
+  
+
+  
   return (
     <>
       <Router />
