@@ -82,10 +82,11 @@
     margin-right: 40px;
 }
 .product__flexed{
-    height: 30vh;
+    height: auto;
+
 }
 .product__flexed img{
-    width: 150px !important;
+    width: 100px !important;
     height: auto;
 }
 @media screen and (max-width: 768px) {

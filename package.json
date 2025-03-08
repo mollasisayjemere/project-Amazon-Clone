@@ -14,8 +14,15 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.5",
+    "@stripe/react-stripe-js": "^3.3.0",
+    "@stripe/stripe-js": "^5.9.2",
+    "axion": "^0.1.0",
     "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
     "firebase": "^11.4.0",
+    "firebase-functions": "^4.3.1",
     "firebase-tools": "^13.32.0",
     "nodemon": "^3.1.9",
     "numeral": "^2.0.6",
@@ -26,11 +33,7 @@
     "react-router-dom": "^7.2.0",
     "react-spinner": "^0.2.7",
     "react-spinners": "^0.15.0",
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "stripe": "^14.14.0",
-    "dotenv": "^16.4.5",
-    "firebase-functions": "^4.3.1"
+    "stripe": "^14.14.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

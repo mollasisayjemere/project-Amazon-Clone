@@ -1,22 +1,3 @@
-/* .login{
-   height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-.login img{
-    margin: 30px auto;
-    object-fit: contain;
-    width: 100px;
-
-} */
-
-
-/* Auth.module.css */
-
-/* Auth.module.css */
-
 .login {
   display: flex;
   flex-direction: column;
@@ -28,9 +9,10 @@
 }
 
 .amazonLogo {
-  width: 100px;
+  width: 150px;
   margin-top: 20px;
   margin-bottom: 20px;
+
 }
 
 .loginContainer {

@@ -12,9 +12,13 @@ import { Type } from "../../Utility/ActionType";
 
 function Cart() {
   const [{basket},dispatch]=useContext(Datacontext);
-  const total = basket.reduce((amount, item) => {
-    return item.price * item.amount + amount;
+  const totalItem = basket.reduce((amount, item) => {
+    return item.amount * item.amount + amount;
   }, 0);
+
+    const total = basket.reduce((amount, item) => {
+      return item.price * item.amount + amount;
+    }, 0);
   const increment = (item) => {
     dispatch({
       type: Type.ADD_TO_BASKET,

@@ -60,11 +60,11 @@ const Header = () => {
             </select>
           </Link>
 
-          <Link to={!user && "/Auth"}>
+          <Link to={!user && "/auth"}>
             <div>
               {user ? (
                 <>
-                  <p>Hello {user?.email?.split("@")[9]}</p>
+                  <p>Hello {user?.email?.split("@")[0]}</p>
 
                   <span onClick={() => auth.signOut()}>sign out</span>
                 </>
@@ -74,10 +74,8 @@ const Header = () => {
                   <span>Account & List</span>
                 </>
               )}
-              (<p>Hello Molla </p>)
             </div>
 
-            <span>Account & List</span>
           </Link>
 
           <Link to="/Orders">
