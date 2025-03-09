@@ -6,7 +6,6 @@
 // import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 // import CurrencyFormater from "../../Components/CurrencyFormater/CurrencyFormater";
 
-
 // function PaymentPage() {
 //   const [{ user, basket }] = useContext(Datacontext);
 //   const totalItem = basket.reduce((amount, item) => amount + item.amount, 0);
@@ -15,14 +14,13 @@
 //       return item.price * item.amount + amount;
 //     }, 0);
 
-    
 //   const stripe = useStripe();
 //   const elements = useElements();
- 
-//   const [cardError, setCardError] = useState(null); 
+
+//   const [cardError, setCardError] = useState(null);
 
 //   const handleChange =  (e) => {
-//     e.preventDefault(); 
+//     e.preventDefault();
 
 //      console.log(e);
 //      e?.error?.message? setCardError(e?.error?.message):setCardError('')
@@ -126,23 +124,21 @@
 
 // export default PaymentPage;
 
-
-
-
 import React, { useContext, useState } from "react";
 import Styles from "./Paymentpage.module.css";
 import LayOut from "../../Components/LayOut/Layout";
-import {DataContext} from "../../DataProvider/DataProvider";
-import ProductCard from "../../Components/Products/ProductCard";
+import { DataContext } from "../../DataProvider/DataProvider";
+import { ProductCard } from "../../Components/Products/ProductCard";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import CurrencyFormat from "../../Components/CurrencyFormater/CurrencyFormater";
-import { axiosInstance } from "axios";
+import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../Utility/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Type } from "../../Utility/ActionType";
 
 const Payment = () => {
+  // const [{ user, basket }, dispatch] = useContext(Datacontext);
   const [{ user, basket }, dispatch] = useContext(DataContext);
 
   const totalItem = basket?.reduce((amount, item) => {
@@ -161,7 +157,6 @@ const Payment = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    
     e?.error?.message ? setCardError(e?.error?.message) : setCardError("");
   };
 
@@ -176,7 +171,7 @@ const Payment = () => {
 
         url: `/payment/create?amountInCents=${total * 100}`,
       });
-      
+
       const clientSecret = response.data?.clientSecret;
 
       //2. client side (react side confirmation)
@@ -185,7 +180,6 @@ const Payment = () => {
           card: elements.getElement(CardElement),
         },
       });
-      
 
       //3. after the confirmation --> order firestore database save, clear basket
 
@@ -205,7 +199,7 @@ const Payment = () => {
 
       setProcessing(false);
       navigate("/orders", { state: { msg: "you have placed new Orders" } });
-    }catch (error) {
+    } catch (error) {
       console.log(error);
       setProcessing(false);
     }
@@ -214,9 +208,7 @@ const Payment = () => {
   return (
     <LayOut>
       {/* header */}
-      <div className={Styles.payment__header}>
-        Checkout ({totalItem}) items
-      </div>
+      <div className={Styles.payment__header}>Checkout ({totalItem}) items</div>
       {/* payment method */}
       <section className={Styles.payment}>
         {/* address */}
@@ -233,8 +225,8 @@ const Payment = () => {
         <div className={Styles.flex}>
           <h3>Review items and delivery</h3>
           <div>
-            {basket?.map((item) => (
-              <ProductCard key={item.id} product={item} flex={true} />
+            {basket?.map((item, i) => (
+              <ProductCard key={i} product={item} flex={true} />
             ))}
           </div>
         </div>

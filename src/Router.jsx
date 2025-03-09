@@ -4,7 +4,7 @@ import LandingPage from "./Pages/LandingPage/LandingPage.jsx";
 import Auth from "./Pages/Auth/Auth.jsx";
 import Cart from "./Pages/Cart/Cart.jsx";
 import Orders from "./Pages/Orders/Orders.jsx";
-import Payment from "./Pages/PaymentPage/PaymentPage.jsx";
+import Payment from "./Pages/PaymentPage/ Payment.jsx";
 import Result from "./Pages/Results/Result";
 import ProductDetail from "./Pages/ProductDetail/ProductDetail.jsx";
 

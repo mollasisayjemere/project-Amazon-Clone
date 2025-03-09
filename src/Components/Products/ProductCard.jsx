@@ -3,28 +3,29 @@ import Rating from "@mui/material/Rating";
 import styles from "./ProductCard.module.css";
 import CurrencyFormater from "../CurrencyFormater/CurrencyFormater.jsx";
 import { Link } from "react-router-dom";
-import { Datacontext } from "../../../src/DataProvider/DataProvider.jsx";
+import { DataContext } from "../../DataProvider/DataProvider.jsx";
 
 import { Type } from "../../Utility/ActionType.js";
 
 export const ProductCard = ({ products, flex, renderDesc, RenderAdd }) => {
-  const { image, title, rating, price, description, id } = products;
-  //  const item ={image, title, rating, price, description, id  }
+  const { image, title, rating, price, description, id } = products || {};
+  const item = { image, title, rating, price, description, id };
 
   // const [state, dispatch] = useContext(Datacontext);
-  const [state, dispatch] = useContext(Datacontext);
+  const [state, dispatch] = useContext(DataContext);
 
   const AddToCart = () => {
     dispatch({
       type: Type.ADD_TO_BASKET,
-      item: {
-        image,
-        title,
-        rating,
-        price,
-        description,
-        id,
-      },
+      // item: {
+      //   image,
+      //   title,
+      //   rating,
+      //   price,
+      //   description,
+      //   id,
+      // },
+      item,
     });
   };
 
@@ -73,5 +74,3 @@ export const ProductCard = ({ products, flex, renderDesc, RenderAdd }) => {
     </div>
   );
 };
-
-

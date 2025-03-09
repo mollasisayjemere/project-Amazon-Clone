@@ -5,7 +5,7 @@ import { BiCart } from "react-icons/bi";
 import styles from "./Header.module.css"; // Correct import
 import { LowerHeader } from "./LowerHeader";
 import { Link } from "react-router-dom";
-import { Datacontext } from "../../DataProvider/DataProvider";
+import { DataContext } from "../../DataProvider/DataProvider";
 import { useContext } from "react";
 import { auth } from "../../Utility/Firebase";
 
@@ -15,7 +15,7 @@ const Header = () => {
   // const context = useContext(Datacontext);
   // const { state } = context || {};
   // const basket = state?.basket || [];
-  const [{ user, basket }, dispatch] = useContext(Datacontext);
+  const [{ user, basket }, dispatch] = useContext(DataContext);
 
   const totalItem = basket.reduce((amount, item) => amount + item.amount, 0);
 

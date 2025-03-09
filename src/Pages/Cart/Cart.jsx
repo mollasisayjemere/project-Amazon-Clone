@@ -1,17 +1,17 @@
 import React from "react";
 import { useContext } from "react";
-import {Datacontext} from "../../../src/DataProvider/DataProvider";
+import {DataContext} from "../../../src/DataProvider/DataProvider";
 import { ProductCard } from "../../Components/Products/ProductCard";
 import CurrencyFormater from "../../Components/CurrencyFormater/CurrencyFormater";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
-import DataProvider from "../../../src/DataProvider/DataProvider";
+import DataProvider from "../../DataProvider/DataProvider";
 import classes from "./Cart.module.css";
 import Layout from "../../Components/LayOut/Layout";
 import { Type } from "../../Utility/ActionType";
 
 function Cart() {
-  const [{basket},dispatch]=useContext(Datacontext);
+  const [{basket},dispatch]=useContext(DataContext);
   const totalItem = basket.reduce((amount, item) => {
     return item.amount * item.amount + amount;
   }, 0);

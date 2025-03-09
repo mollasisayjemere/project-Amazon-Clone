@@ -7,13 +7,13 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { PacmanLoader } from "react-spinners";
-import { Datacontext } from "../../DataProvider/DataProvider.jsx";
+import { DataContext } from "../../DataProvider/DataProvider.jsx";
 import Type from "../../DataProvider/DataProvider.jsx"; // Import Type from reducer
 function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [{ user }, dispatch] = useContext(Datacontext);
+  const [{ user }, dispatch] = useContext(DataContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState({
     signIn: false,
