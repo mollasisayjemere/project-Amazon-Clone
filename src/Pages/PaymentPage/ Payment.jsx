@@ -130,12 +130,12 @@ import LayOut from "../../Components/LayOut/Layout";
 import { DataContext } from "../../DataProvider/DataProvider";
 import { ProductCard } from "../../Components/Products/ProductCard";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import CurrencyFormat from "../../Components/CurrencyFormater/CurrencyFormater";
 import { axiosInstance } from "../../Api/axios";
 import { ClipLoader } from "react-spinners";
 import { db } from "../../Utility/Firebase";
 import { useNavigate } from "react-router-dom";
 import { Type } from "../../Utility/ActionType";
+import CurrencyFormater from "../../Components/CurrencyFormater/CurrencyFormater";
 
 const Payment = () => {
   // const [{ user, basket }, dispatch] = useContext(Datacontext);
@@ -166,12 +166,11 @@ const Payment = () => {
     try {
       setProcessing(true);
       //1. backend || function ---> contact to the client secret
+
       const response = await axiosInstance({
         method: "POST",
-
-        url: `/payment/create?amountInCents=${total * 100}`,
+        url: `/payment/create?total=${total * 100}`,
       });
-
       const clientSecret = response.data?.clientSecret;
 
       //2. client side (react side confirmation)
@@ -216,8 +215,8 @@ const Payment = () => {
           <h3>Delivery Address</h3>
           <div>
             <div>{user?.email}</div>
-            <div>123 React Lane</div>
-            <div>MeryLand, Md</div>
+            <div>2 rue Du Stade</div>
+            <div>Belvaux, Lu</div>
           </div>
         </div>
         <hr />
@@ -226,7 +225,7 @@ const Payment = () => {
           <h3>Review items and delivery</h3>
           <div>
             {basket?.map((item, i) => (
-              <ProductCard key={i} product={item} flex={true} />
+              <ProductCard key={i} products={item} flex={true} />
             ))}
           </div>
         </div>
@@ -248,7 +247,7 @@ const Payment = () => {
                   <div>
                     <span style={{ display: "flex", gap: "10px" }}>
                       <p>Total Order | </p>
-                      <CurrencyFormat amount={total} />{" "}
+                      <CurrencyFormater value={total} />
                     </span>
                   </div>
                   <button type="submit">

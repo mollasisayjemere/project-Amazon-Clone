@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import styles from "./ Auth.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from "../../Utility/Firebase.js";
 import {
   signInWithEmailAndPassword,
@@ -15,6 +15,7 @@ function Auth() {
   const [error, setError] = useState("");
   const [{ user }, dispatch] = useContext(DataContext);
   const navigate = useNavigate();
+  const navStateData = useLocation();
   const [loading, setLoading] = useState({
     signIn: false,
     signUp: false,
@@ -33,7 +34,7 @@ function Auth() {
           password
         );
         dispatch({ type: Type.SET_USER, user: userInfo.user });
-        navigate("/");
+        navigate(navStateData?.state?.redirect || "/");
         setLoading({ ...loading, signIn: false });
       } else {
         setLoading({ ...loading, signUp: true });
@@ -43,7 +44,7 @@ function Auth() {
           password
         );
         dispatch({ type: Type.SET_USER, user: userInfo.user });
-        navigate("/");
+        navigate(navStateData?.state?.redirect || "/");
         setLoading({ ...loading, signUp: false });
       }
     } catch (err) {
@@ -69,6 +70,32 @@ function Auth() {
       <div className={styles.loginContainer}>
         <h1>Sign In</h1>
         {/* {error && <p className={styles.error}>{error}</p>} */}
+        {/* (navStateData?.state?.msg &&{" "}
+        {
+          <small
+            style={{
+              padding: "5px",
+              textAlign: "center",
+              color: "red",
+              fontSize: "bold",
+            }}
+          >
+            (navStateData?.state?.msg)
+          </small>
+        }
+        ) */}
+        {navStateData?.state?.msg && (
+        <small
+          style={{
+            padding: "5px",
+            textAlign: "center",
+            color: "red",
+            fontSize: "bold",
+          }}
+        >
+          {navStateData?.state?.msg}
+        </small>
+        )}
         <form>
           <div className={styles.formGroup}>
             <label htmlFor="email">Email</label>

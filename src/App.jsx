@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { DataContext } from "./DataProvider/DataProvider.jsx";
+import { DataContext}  from "./DataProvider/DataProvider.jsx";
 import "./App.css";
 import { Type } from "./Utility/ActionType.js";
 import { auth } from "./Utility/Firebase.js";
