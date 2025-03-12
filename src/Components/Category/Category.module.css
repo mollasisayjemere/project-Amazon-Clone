@@ -33,12 +33,15 @@
 .category__container {
     position: relative;
     margin-top: -10%;
-    /* display: grid;
-    grid-template-columns: repeat((4, 1fr));
-    place-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto_fit,minmax(350px,1fr));
+    place-items: center;
     display: flex;
     justify-content: space-around;
     margin-bottom: 10px;
+    gap: 50px;
+    margin-right: auto;
+    margin-left: auto;
 }
 @media screen and (max-width: 768px) {
     .category__container{
