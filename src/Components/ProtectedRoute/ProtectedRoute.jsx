@@ -9,9 +9,9 @@ function ProtectedRoute({children, msg,redirect}) {
     useEffect(() => {
  
       if (!user) {
-        navigate("/auth", { state: { msg: msg, redirect: redirect } });
+        navigate("/auth", { state: { msg, redirect } });
       }
-    }, [user, navigate, msg, redirect]); // Add navigate, msg, redirect to dependency array
+    }, [user]); // Add navigate, msg, redirect to dependency array
 
     return children;
     

@@ -1,13 +1,14 @@
+import { Type } from "./ActionType";
 
 export const initialState = {
   basket: [],
   user: null,
 };
-export const Type = {
-  SET_USER: "SET_USER",
-  ADD_TO_BASKET: "ADD_TO_BASKET",
-  REMOVE_FROM_BASKET: "REMOVE_FROM_BASKET",
-};
+// export const Type = {
+//   SET_USER: "SET_USER",
+//   ADD_TO_BASKET: "ADD_TO_BASKET",
+//   REMOVE_FROM_BASKET: "REMOVE_FROM_BASKET",
+// };
 export const reducer = (state, action) => {
   console.log("Reducer action:", action); // Add this line for debugging
   switch (action.type) {
@@ -48,6 +49,8 @@ export const reducer = (state, action) => {
         ...state,
         user: action.user,
       };
+      case Type.EMPTY_BASKET:
+        return{...state , basket:[]}
     default:
       return state;
   }

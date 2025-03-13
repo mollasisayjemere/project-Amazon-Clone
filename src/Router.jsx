@@ -31,8 +31,8 @@ function Router() {
             path="/orders"
             element={
               <ProtectedRoute
-                meg={"you must log in to access your order"}
-                redirect={"/payments"}
+                msg={"you must log in to access your order"}
+                redirect={"/orders"}
               >
                 <Orders />
               </ProtectedRoute>
@@ -42,8 +42,8 @@ function Router() {
             path="/payment"
             element={
               <ProtectedRoute
-                meg={"you must log in to pay"}
-                redirect={"/payments"}
+                msg={"you must log in to pay"}
+                redirect={"/payment"}
               >
                 <Elements stripe={stripePromise}>
                   <Payment />

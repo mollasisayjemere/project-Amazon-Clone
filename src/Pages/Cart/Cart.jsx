@@ -6,7 +6,7 @@ import CurrencyFormater from "../../Components/CurrencyFormater/CurrencyFormater
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 import DataProvider from "../../DataProvider/DataProvider";
-import classes from "./Cart.module.css";
+import styles from "./Cart.module.css";
 import Layout from "../../Components/LayOut/Layout";
 import { Type } from "../../Utility/ActionType";
 
@@ -35,8 +35,8 @@ function Cart() {
 
   return (
     <Layout>
-      <div className={classes.container}>
-        <div className={classes.cart__container}>
+      <div className={styles.container}>
+        <div className={styles.cart__container}>
           <h1>Your Shopping Basket</h1>
           <hr />
           {basket?.length === 0 ? (
@@ -44,7 +44,7 @@ function Cart() {
           ) : (
             basket?.map((item, i) => {
               return (
-                <section className={classes.cart__product} key={item.id}>
+                <section className={styles.cart__product} key={item.id}>
                   <ProductCard
                     key={i}
                     products={item}
@@ -52,19 +52,19 @@ function Cart() {
                     renderDesc={true}
                     flex={true}
                   />
-                  <div className={classes.btn_container}>
+                  <div className={styles.btn_container}>
                     <button
-                      className={classes.btn}
+                      className={styles.btn}
                       onClick={() => increment(item)}
                     >
-                      <IoIosArrowUp size={30}/>
+                      <IoIosArrowUp size={30} />
                     </button>
                     <span>{item.amount}</span>
                     <button
-                      className={classes.btn}
+                      className={styles.btn}
                       onClick={() => decrement(item.id)}
                     >
-                      <IoIosArrowDown size={30}/>
+                      <IoIosArrowDown size={30} />
                     </button>
                   </div>
                 </section>
@@ -73,7 +73,7 @@ function Cart() {
           )}
         </div>
         {basket?.length !== 0 && (
-          <div className={classes.subtotal}>
+          <div className={styles.subtotal}>
             <div>
               <p>Subtotal ({basket?.length} items) </p>
               <CurrencyFormater value={total} />
