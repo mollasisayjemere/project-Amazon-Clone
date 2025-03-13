@@ -21,7 +21,7 @@ const stripePromise = loadStripe(
 function Router() {
   return (
     <div>
-      <BrowserRouter basename="/Project-Amazon-Clone">
+      <BrowserRouter basename="/project-Amazon-Clone">
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/Products/:productId" element={<ProductDetail />} />
